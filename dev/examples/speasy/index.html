@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Complex requests and flexible layout · SpaceTools</title><meta name="title" content="Complex requests and flexible layout · SpaceTools"/><meta property="og:title" content="Complex requests and flexible layout · SpaceTools"/><meta property="twitter:title" content="Complex requests and flexible layout · SpaceTools"/><meta name="description" content="Documentation for SpaceTools."/><meta property="og:description" content="Documentation for SpaceTools."/><meta property="twitter:description" content="Documentation for SpaceTools."/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">SpaceTools</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><span class="tocitem">Tutorials</span><ul><li><a class="tocitem" href="../../tutorials/getting-started/">Quickstart</a></li></ul></li><li><span class="tocitem">Examples</span><ul><li><a class="tocitem" href="../">Overview</a></li><li class="is-active"><a class="tocitem" href>Complex requests and flexible layout</a><ul class="internal"><li><a class="tocitem" href="#Get-data-with-Speasy"><span>Get data with Speasy</span></a></li><li><a class="tocitem" href="#A-complex-requests"><span>A complex requests</span></a></li><li><a class="tocitem" href="#Plotting-multiple-time-series-on-a-single-figure"><span>Plotting multiple time series on a single figure</span></a></li></ul></li><li><a class="tocitem" href="../interactive/">Basic interactive tplot</a></li><li><a class="tocitem" href="../interactive_speasy/">Interactive tplot with Speasy</a></li></ul></li><li><span class="tocitem">Explanation</span><ul><li><a class="tocitem" href="../../explanations/tplot/">Tplot</a></li><li><a class="tocitem" href="../../explanations/coords/">Coordinate Systems</a></li></ul></li><li><a class="tocitem" href="../../api/">API</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Examples</a></li><li class="is-active"><a href>Complex requests and flexible layout</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Complex requests and flexible layout</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/Beforerr/SpaceTools.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/Beforerr/SpaceTools.jl/blob/main/docs/src/examples/speasy.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Complex-requests-and-flexible-layout"><a class="docs-heading-anchor" href="#Complex-requests-and-flexible-layout">Complex requests and flexible layout</a><a id="Complex-requests-and-flexible-layout-1"></a><a class="docs-heading-anchor-permalink" href="#Complex-requests-and-flexible-layout" title="Permalink"></a></h1><p>Visualize multiple time series in a customized layout.</p><h2 id="Get-data-with-Speasy"><a class="docs-heading-anchor" href="#Get-data-with-Speasy">Get data with Speasy</a><a id="Get-data-with-Speasy-1"></a><a class="docs-heading-anchor-permalink" href="#Get-data-with-Speasy" title="Permalink"></a></h2><pre><code class="language-julia hljs">using Speasy
+spz = speasy()
+
+using CairoMakie
+using DimensionalData
+using SpaceTools
+using Dates</code></pre><h2 id="A-complex-requests"><a class="docs-heading-anchor" href="#A-complex-requests">A complex requests</a><a id="A-complex-requests-1"></a><a class="docs-heading-anchor-permalink" href="#A-complex-requests" title="Permalink"></a></h2><pre><code class="language-julia hljs">data = let intervals = [&quot;2019-01-02T15&quot;, &quot;2019-01-02T16&quot;]
+    products = [
+        spz.inventories.tree.cda.MMS.MMS1.FGM.MMS1_FGM_SRVY_L2.mms1_fgm_b_gse_srvy_l2_clean,
+        spz.inventories.tree.cda.MMS.MMS1.SCM.MMS1_SCM_SRVY_L2_SCSRVY.mms1_scm_acb_gse_scsrvy_srvy_l2,
+        spz.inventories.tree.cda.MMS.MMS1.DES.MMS1_FPI_FAST_L2_DES_MOMS.mms1_des_bulkv_gse_fast,
+        spz.inventories.tree.cda.MMS.MMS1.DES.MMS1_FPI_FAST_L2_DES_MOMS.mms1_des_temppara_fast,
+        spz.inventories.tree.cda.MMS.MMS1.DES.MMS1_FPI_FAST_L2_DES_MOMS.mms1_des_tempperp_fast,
+        spz.inventories.tree.cda.MMS.MMS1.DES.MMS1_FPI_FAST_L2_DES_MOMS.mms1_des_energyspectr_omni_fast,
+        spz.inventories.tree.cda.MMS.MMS1.DIS.MMS1_FPI_FAST_L2_DIS_MOMS.mms1_dis_energyspectr_omni_fast
+    ]
+    get_data(products, intervals)
+end</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">7-element Vector{SpeasyVariable}:
+ SpeasyVariable:
+  Name: mms1_fgm_b_gse_srvy_l2_clean
+  Time Range: 2019-01-02T15:00:00 to 2019-01-02T15:59:59.926
+  Units: nT
+  Shape: (57599, 4)
+  Size: 1.319 MiB
+  Columns: [&#39;Bx GSE&#39;, &#39;By GSE&#39;, &#39;Bz GSE&#39;, &#39;Bt&#39;]
+  Metadata:
+    CATDESC: Magnetic field vector in Geocentric Solar Ecliptic (GSE) cartesian coordinates plus Btotal (8 or 16 S/s)
+    COORDINATE_SYSTEM: GSE
+    DEPEND_0: Epoch
+    DIM_SIZES: Any[4]
+    DISPLAY_TYPE: time_series
+    FIELDNAM: Magnetic field vector in GSE plus Btotal (8 or 16 S/s)
+    FILLVAL: Any[-9.999999848243207e30]
+    FORMAT: E13.5
+    LABL_PTR_1: Any[&quot;Bx GSE&quot;, &quot;By GSE&quot;, &quot;Bz GSE&quot;, &quot;Bt    &quot;]
+    REPRESENTATION_1: represent_vec_tot
+    SCALETYP: linear
+    SI_CONVERSION: 1.0e-9&gt;T
+    TENSOR_ORDER: Any[1]
+    UNITS: nT
+    VALIDMAX: Any[17000.0, 17000.0, 17000.0, 17000.0]
+    VALIDMIN: Any[-17000.0, -17000.0, -17000.0, 0.0]
+    VAR_TYPE: data
+
+ SpeasyVariable:
+  Name: mms1_scm_acb_gse_scsrvy_srvy_l2
+  Time Range: 2019-01-02T15:00:00 to 2019-01-02T15:59:59.958
+  Units: nT
+  Shape: (115198, 3)
+  Size: 2.198 MiB
+  Columns: [&#39;Bx GSE&#39;, &#39;By GSE&#39;, &#39;Bz GSE&#39;]
+  Metadata:
+    CATDESC: L2 AC magnetic field in GSE frame
+    COORDINATE_SYSTEM: GSE
+    DEPEND_0: Epoch
+    DISPLAY_TYPE: time_series
+    FIELDNAM: L2 AC Bfield in GSE
+    FILLVAL: Any[NaN]
+    FORMAT: E13.5
+    LABL_PTR_1: Any[&quot;Bx GSE&quot;, &quot;By GSE&quot;, &quot;Bz GSE&quot;]
+    REPRESENTATION_1: mms1_scm_acb_gse_scsrvy_srvy_l2_representation_1
+    SCALETYP: linear
+    SI_CONVERSION: 1.0e-9&gt;T
+    TENSOR_ORDER: Any[1]
+    UNITS: nT
+    VALIDMAX: Any[30000.0]
+    VALIDMIN: Any[-30000.0]
+    VAR_NOTES: These calibrated (nT) AC magnetic field waveform data are sampled at 32S/s. They are high-pass filtered above 0.50Hz but not low-pass filtered. See global attributes for details. For more information, please have a look at the SCM Data Products Guide.
+    VAR_TYPE: data
+
+ SpeasyVariable:
+  Name: mms1_des_bulkv_gse_fast
+  Time Range: 2019-01-02T15:00:01 to 2019-01-02T15:59:56.530
+  Units: km/s
+  Shape: (800, 3)
+  Size: 16.653 KiB
+  Columns: [&#39;Vx_GSE&#39;, &#39;Vy_GSE&#39;, &#39;Vz_GSE&#39;]
+  Metadata:
+    CATDESC: MMS1 FPI/DES electron bulk-velocity GSE vector during this survey
+    COORDINATE_SYSTEM: GSE&gt;Geocentric Solar Ecliptic
+    DELTA_MINUS_VAR: mms1_des_bulkv_err_fast
+    DELTA_PLUS_VAR: mms1_des_bulkv_err_fast
+    DEPEND_0: Epoch
+    DISPLAY_TYPE: time_series
+    FIELDNAM: MMS1 FPI/DES GSE bulk v
+    FILLVAL: Any[-9.999999848243207e30]
+    FORMAT: E12.2
+    LABL_PTR_1: Any[&quot;Vx_GSE&quot;, &quot;Vy_GSE&quot;, &quot;Vz_GSE&quot;]
+    REPRESENTATION_1: mms1_des_cartrep_fast
+    SCALETYP: linear
+    SI_CONVERSION: 1.0e3&gt;m s^-1
+    TENSOR_ORDER: Any[1]
+    UNITS: km/s
+    VALIDMAX: Any[110000.0]
+    VALIDMIN: Any[-110000.0]
+    VAR_TYPE: data
+
+ SpeasyVariable:
+  Name: mms1_des_temppara_fast
+  Time Range: 2019-01-02T15:00:01 to 2019-01-02T15:59:56.530
+  Units: eV
+  Shape: (800, 1)
+  Size: 10.402 KiB
+  Columns: [&#39;eT_para&#39;]
+  Metadata:
+    CATDESC: MMS1 FPI/DES electron parallel temperature during this BP
+    DEPEND_0: Epoch
+    DISPLAY_TYPE: time_series
+    FIELDNAM: MMS1 FPI1/DES tempPara
+    FILLVAL: Any[-9.999999848243207e30]
+    FORMAT: E12.2
+    LABLAXIS: eT_para
+    SCALETYP: linear
+    SI_CONVERSION: 11604.50520&gt;K
+    UNITS: eV
+    VALIDMAX: Any[1.0000000150474662e30]
+    VALIDMIN: Any[0.0]
+    VAR_TYPE: data
+
+ SpeasyVariable:
+  Name: mms1_des_tempperp_fast
+  Time Range: 2019-01-02T15:00:01 to 2019-01-02T15:59:56.530
+  Units: eV
+  Shape: (800, 1)
+  Size: 10.402 KiB
+  Columns: [&#39;eT_perp&#39;]
+  Metadata:
+    CATDESC: MMS1 FPI/DES electron perpendicular temperature during this BP
+    DEPEND_0: Epoch
+    DISPLAY_TYPE: time_series
+    FIELDNAM: MMS1 FPI1/DES tempPerp
+    FILLVAL: Any[-9.999999848243207e30]
+    FORMAT: E12.2
+    LABLAXIS: eT_perp
+    SCALETYP: linear
+    SI_CONVERSION: 11604.50520&gt;K
+    UNITS: eV
+    VALIDMAX: Any[1.0000000150474662e30]
+    VALIDMIN: Any[0.0]
+    VAR_TYPE: data
+
+ SpeasyVariable:
+  Name: mms1_des_energyspectr_omni_fast
+  Time Range: 2019-01-02T15:00:01 to 2019-01-02T15:59:56.530
+  Units: keV/(cm^2 s sr keV)
+  Shape: (800, 32)
+  Size: 207.807 KiB
+  Columns: [&#39;DEF_omni[0]&#39;, &#39;DEF_omni[1]&#39;, &#39;DEF_omni[2]&#39;, &#39;DEF_omni[3]&#39;, &#39;DEF_omni[4]&#39;, &#39;DEF_omni[5]&#39;, &#39;DEF_omni[6]&#39;, &#39;DEF_omni[7]&#39;, &#39;DEF_omni[8]&#39;, &#39;DEF_omni[9]&#39;, &#39;DEF_omni[10]&#39;, &#39;DEF_omni[11]&#39;, &#39;DEF_omni[12]&#39;, &#39;DEF_omni[13]&#39;, &#39;DEF_omni[14]&#39;, &#39;DEF_omni[15]&#39;, &#39;DEF_omni[16]&#39;, &#39;DEF_omni[17]&#39;, &#39;DEF_omni[18]&#39;, &#39;DEF_omni[19]&#39;, &#39;DEF_omni[20]&#39;, &#39;DEF_omni[21]&#39;, &#39;DEF_omni[22]&#39;, &#39;DEF_omni[23]&#39;, &#39;DEF_omni[24]&#39;, &#39;DEF_omni[25]&#39;, &#39;DEF_omni[26]&#39;, &#39;DEF_omni[27]&#39;, &#39;DEF_omni[28]&#39;, &#39;DEF_omni[29]&#39;, &#39;DEF_omni[30]&#39;, &#39;DEF_omni[31]&#39;]
+  Metadata:
+    CATDESC: MMS1 FPI/DES omni-directional electron energy spectrum during this survey
+    DEPEND_0: Epoch
+    DEPEND_1: mms1_des_energy_fast
+    DISPLAY_TYPE: spectrogram
+    FIELDNAM: MMS1 FPI/DES energySpectr_omni
+    FILLVAL: Any[-9.999999848243207e30]
+    FORMAT: E12.2
+    LABLAXIS: DEF_omni
+    SCALETYP: log
+    SI_CONVERSION: 1.e4&gt;m^-2 s^-1 sr^-1
+    UNITS: keV/(cm^2 s sr keV)
+    VALIDMAX: Any[1.0000000150474662e30]
+    VALIDMIN: Any[0.0]
+    VAR_NOTES: Differential energy flux, averaged (weighted by solid angle) over all look directions, by energy bin.
+    VAR_TYPE: data
+
+ SpeasyVariable:
+  Name: mms1_dis_energyspectr_omni_fast
+  Time Range: 2019-01-02T15:00:01 to 2019-01-02T15:59:56.530
+  Units: keV/(cm^2 s sr keV)
+  Shape: (800, 32)
+  Size: 207.807 KiB
+  Columns: [&#39;DEF_omni[0]&#39;, &#39;DEF_omni[1]&#39;, &#39;DEF_omni[2]&#39;, &#39;DEF_omni[3]&#39;, &#39;DEF_omni[4]&#39;, &#39;DEF_omni[5]&#39;, &#39;DEF_omni[6]&#39;, &#39;DEF_omni[7]&#39;, &#39;DEF_omni[8]&#39;, &#39;DEF_omni[9]&#39;, &#39;DEF_omni[10]&#39;, &#39;DEF_omni[11]&#39;, &#39;DEF_omni[12]&#39;, &#39;DEF_omni[13]&#39;, &#39;DEF_omni[14]&#39;, &#39;DEF_omni[15]&#39;, &#39;DEF_omni[16]&#39;, &#39;DEF_omni[17]&#39;, &#39;DEF_omni[18]&#39;, &#39;DEF_omni[19]&#39;, &#39;DEF_omni[20]&#39;, &#39;DEF_omni[21]&#39;, &#39;DEF_omni[22]&#39;, &#39;DEF_omni[23]&#39;, &#39;DEF_omni[24]&#39;, &#39;DEF_omni[25]&#39;, &#39;DEF_omni[26]&#39;, &#39;DEF_omni[27]&#39;, &#39;DEF_omni[28]&#39;, &#39;DEF_omni[29]&#39;, &#39;DEF_omni[30]&#39;, &#39;DEF_omni[31]&#39;]
+  Metadata:
+    CATDESC: MMS1 FPI/DIS omni-directional ion energy spectrum during this survey
+    DEPEND_0: Epoch
+    DEPEND_1: mms1_dis_energy_fast
+    DISPLAY_TYPE: spectrogram
+    FIELDNAM: MMS1 FPI/DIS energySpectr_omni
+    FILLVAL: Any[-9.999999848243207e30]
+    FORMAT: E12.2
+    LABLAXIS: DEF_omni
+    SCALETYP: log
+    SI_CONVERSION: 1.e4&gt;m^-2 s^-1 sr^-1
+    UNITS: keV/(cm^2 s sr keV)
+    VALIDMAX: Any[1.0000000150474662e30]
+    VALIDMIN: Any[0.0]
+    VAR_NOTES: Differential energy flux by energy bin, averaged (weighted by solid angle) over all directions (flow or look).
+    VAR_TYPE: data
+</code></pre><h2 id="Plotting-multiple-time-series-on-a-single-figure"><a class="docs-heading-anchor" href="#Plotting-multiple-time-series-on-a-single-figure">Plotting multiple time series on a single figure</a><a id="Plotting-multiple-time-series-on-a-single-figure-1"></a><a class="docs-heading-anchor-permalink" href="#Plotting-multiple-time-series-on-a-single-figure" title="Permalink"></a></h2><pre><code class="language-julia hljs">let figure = (; size=(1200, 1200)), add_title = true
+    f = Figure(; figure...)
+    tplot(f[1, 1], data[1:3]; add_title)
+    tplot(f[1, 2], [data[4:5], data[6:7]...]; add_title)
+    f
+end</code></pre><img src="f076189a.png" alt="Example block output"/></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Overview</a><a class="docs-footer-nextpage" href="../interactive/">Basic interactive tplot »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.8.1 on <span class="colophon-date" title="Sunday 23 February 2025 19:59">Sunday 23 February 2025</span>. Using Julia version 1.11.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
